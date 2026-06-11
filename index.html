@@ -132,19 +132,83 @@
 
     /* TABLE */
     .table-wrap { background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border); overflow: hidden; }
-    .table-head { display: grid; grid-template-columns: 110px 1fr 90px 100px 120px 90px; padding: 10px 16px; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .table-head { display: grid; grid-template-columns: 110px 1fr 90px 100px 120px 130px; padding: 10px 16px; background: var(--bg); border-bottom: 1px solid var(--border); }
     .table-head span { font-size: 11px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-    .table-row { display: grid; grid-template-columns: 110px 1fr 90px 100px 120px 90px; padding: 13px 16px; border-bottom: 1px solid var(--border); align-items: center; transition: background 0.1s; }
+    .table-row { display: grid; grid-template-columns: 110px 1fr 90px 100px 120px 130px; padding: 13px 16px; border-bottom: 1px solid var(--border); align-items: center; transition: background 0.1s; }
     .table-row:last-child { border-bottom: none; }
     .table-row:hover { background: #FAFAFA; }
     .table-row span { font-size: 13px; color: var(--text); }
     .order-no { font-weight: 600; font-size: 12px; color: var(--blue) !important; }
-    .action-btns { display: flex; gap: 6px; }
-    .btn-edit { background: transparent; border: 1px solid var(--border); padding: 5px 10px; border-radius: 8px; font-size: 12px; cursor: pointer; color: var(--text-muted); transition: all 0.15s; }
+    .action-btns { display: flex; gap: 5px; flex-wrap: wrap; }
+    .btn-edit { background: transparent; border: 1px solid var(--border); padding: 5px 8px; border-radius: 8px; font-size: 12px; cursor: pointer; color: var(--text-muted); transition: all 0.15s; }
     .btn-edit:hover { background: var(--bg); color: var(--text); }
-    .btn-del { background: transparent; border: 1px solid #F0959580; padding: 5px 10px; border-radius: 8px; font-size: 12px; cursor: pointer; color: #A32D2D; transition: all 0.15s; }
+    .btn-del { background: transparent; border: 1px solid #F0959580; padding: 5px 8px; border-radius: 8px; font-size: 12px; cursor: pointer; color: #A32D2D; transition: all 0.15s; }
     .btn-del:hover { background: #FCEBEB; }
+    .btn-inv { background: transparent; border: 1px solid #9FE1CB; padding: 5px 8px; border-radius: 8px; font-size: 12px; cursor: pointer; color: #0F6E56; transition: all 0.15s; }
+    .btn-inv:hover { background: #E1F5EE; }
     .empty-state { padding: 3rem; text-align: center; color: var(--text-muted); font-size: 14px; }
+
+    /* INVOICE MODAL */
+    .invoice-modal { background: var(--bg-card); border-radius: var(--radius-lg); padding: 1.75rem; width: 100%; max-width: 580px; max-height: 92vh; overflow-y: auto; }
+    .invoice-modal h3 { font-size: 17px; font-weight: 600; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 8px; }
+    .inv-section { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+    .inv-section-title { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+    .inv-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px; }
+    .inv-info-grid .label { color: var(--text-muted); }
+    .inv-info-grid .val { font-weight: 500; }
+    .inv-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .inv-row label { font-size: 13px; color: var(--text-muted); width: 180px; flex-shrink: 0; font-weight: 500; }
+    .inv-row input { flex: 1; height: 38px; padding: 0 10px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg-input); font-size: 13px; color: var(--text); outline: none; }
+    .inv-row input:focus { border-color: var(--blue); }
+    .inv-summary { background: var(--bg); border-radius: var(--radius); padding: 12px 16px; }
+    .inv-total-row { display: flex; justify-content: space-between; padding: 4px 0; font-size: 13px; color: var(--text-muted); }
+    .inv-total-row.discount { color: #0F6E56; }
+    .inv-total-row.grand { border-top: 1px solid var(--border); padding-top: 10px; margin-top: 6px; font-size: 15px; font-weight: 700; color: var(--text); }
+    .inv-total-row.grand .val { color: var(--blue); }
+    .btn-preview { padding: 9px 16px; background: var(--blue); color: #fff; border: none; border-radius: var(--radius); font-size: 13px; font-weight: 600; cursor: pointer; }
+    .btn-preview:hover { background: var(--blue-dark); }
+
+    /* INVOICE PRINT PREVIEW */
+    .invoice-preview-modal { background: var(--bg-card); border-radius: var(--radius-lg); padding: 1.75rem; width: 100%; max-width: 680px; max-height: 92vh; overflow-y: auto; }
+    .inv-preview-actions { display: flex; gap: 8px; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .btn-print { padding: 9px 16px; background: #0F6E56; color: #fff; border: none; border-radius: var(--radius); font-size: 13px; font-weight: 600; cursor: pointer; }
+    .btn-print:hover { background: #085041; }
+    .btn-pdf { padding: 9px 16px; background: #A32D2D; color: #fff; border: none; border-radius: var(--radius); font-size: 13px; font-weight: 600; cursor: pointer; }
+    .btn-pdf:hover { background: #791F1F; }
+    .btn-back-inv { padding: 9px 16px; border: 1px solid var(--border); background: transparent; border-radius: var(--radius); font-size: 13px; cursor: pointer; color: var(--text-muted); }
+
+    /* INVOICE DOCUMENT */
+    #invoice-doc { background: #fff; border: 1px solid #E5E7EB; border-radius: var(--radius); padding: 2rem; color: #111; }
+    .inv-doc-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid #185FA5; }
+    .inv-doc-company { font-size: 20px; font-weight: 700; color: #185FA5; margin-bottom: 4px; }
+    .inv-doc-company-sub { font-size: 12px; color: #6B7280; }
+    .inv-doc-title { text-align: right; }
+    .inv-doc-title h2 { font-size: 26px; font-weight: 700; color: #185FA5; margin-bottom: 4px; letter-spacing: 2px; }
+    .inv-doc-title p { font-size: 12px; color: #6B7280; }
+    .inv-doc-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .inv-doc-meta-block h4 { font-size: 11px; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; border-bottom: 1px solid #E5E7EB; padding-bottom: 4px; }
+    .inv-doc-meta-block p { font-size: 13px; margin-bottom: 3px; color: #374151; }
+    .inv-doc-meta-block .big { font-size: 15px; font-weight: 600; color: #111; }
+    .inv-doc-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 13px; }
+    .inv-doc-table th { background: #185FA5; color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 12px; }
+    .inv-doc-table th:last-child { text-align: right; }
+    .inv-doc-table td { padding: 12px 14px; border-bottom: 1px solid #F3F4F6; color: #374151; }
+    .inv-doc-table td:last-child { text-align: right; font-weight: 500; color: #111; }
+    .inv-doc-table tr:last-child td { border-bottom: none; }
+    .inv-doc-totals { margin-left: auto; width: 280px; }
+    .inv-doc-total-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 13px; color: #6B7280; }
+    .inv-doc-total-row.discount { color: #0F6E56; font-weight: 500; }
+    .inv-doc-total-row.grand { border-top: 2px solid #111; padding-top: 12px; margin-top: 6px; font-size: 16px; font-weight: 700; color: #111; }
+    .inv-doc-total-row.grand .val { color: #185FA5; }
+    .inv-paid-wrap { text-align: center; margin-top: 1.5rem; }
+    .inv-paid-stamp { display: inline-block; border: 3px solid #0F6E56; color: #0F6E56; font-size: 16px; font-weight: 700; padding: 6px 20px; border-radius: 6px; transform: rotate(-8deg); letter-spacing: 3px; opacity: 0.8; }
+    .inv-doc-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #E5E7EB; font-size: 12px; color: #9CA3AF; text-align: center; }
+
+    @media print {
+      body * { visibility: hidden !important; }
+      #invoice-doc, #invoice-doc * { visibility: visible !important; }
+      #invoice-doc { position: fixed !important; left: 0 !important; top: 0 !important; width: 100% !important; padding: 2rem !important; border: none !important; border-radius: 0 !important; }
+    }
 
     /* MODAL */
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; padding: 1rem; }
@@ -358,6 +422,122 @@
   </div>
 </div>
 
+<!-- MODAL: INVOICE FORM -->
+<div class="modal-overlay" id="invoice-overlay">
+  <div class="invoice-modal">
+    <h3>&#128203; Buat Invoice</h3>
+    <div class="inv-section">
+      <div class="inv-section-title">Data Customer</div>
+      <div class="inv-info-grid">
+        <div class="label">Nama</div><div class="val" id="inv-name"></div>
+        <div class="label">No. Order</div><div class="val" id="inv-orderno"></div>
+        <div class="label">Jenis Visa</div><div class="val" id="inv-visa"></div>
+        <div class="label">Tanggal Order</div><div class="val" id="inv-date"></div>
+      </div>
+    </div>
+    <div class="inv-section">
+      <div class="inv-section-title">Detail Biaya</div>
+      <div class="inv-row">
+        <label>Deskripsi Layanan *</label>
+        <input type="text" id="inv-desc" placeholder="Visa Jepang - Biaya Visa & Jasa" />
+      </div>
+      <div class="inv-row">
+        <label>Biaya Visa + Jasa (Rp) *</label>
+        <input type="number" id="inv-amount" placeholder="0" min="0" oninput="calcInvTotal()" />
+      </div>
+      <div class="inv-row">
+        <label>Biaya Lain-lain (Rp)</label>
+        <input type="number" id="inv-extra" placeholder="0" min="0" oninput="calcInvTotal()" />
+      </div>
+      <div class="inv-row">
+        <label>Keterangan Biaya Lain</label>
+        <input type="text" id="inv-extra-label" placeholder="Contoh: Biaya kurir" />
+      </div>
+      <div class="inv-row">
+        <label>Diskon (Rp)</label>
+        <input type="number" id="inv-discount" placeholder="0" min="0" oninput="calcInvTotal()" />
+      </div>
+      <div class="inv-row">
+        <label>Keterangan Diskon</label>
+        <input type="text" id="inv-discount-label" placeholder="Contoh: Diskon member" />
+      </div>
+    </div>
+    <div class="inv-section">
+      <div class="inv-section-title">Ringkasan</div>
+      <div class="inv-summary">
+        <div class="inv-total-row"><span>Biaya Visa + Jasa</span><span id="inv-t-amount">Rp 0</span></div>
+        <div class="inv-total-row" id="inv-t-extra-row" style="display:none"><span id="inv-t-extra-label">Biaya lain</span><span id="inv-t-extra">Rp 0</span></div>
+        <div class="inv-total-row discount" id="inv-t-disc-row" style="display:none"><span id="inv-t-disc-label">Diskon</span><span id="inv-t-disc">- Rp 0</span></div>
+        <div class="inv-total-row grand"><span>Total</span><span class="val" id="inv-t-total">Rp 0</span></div>
+      </div>
+    </div>
+    <div class="inv-row" style="margin-top:0.5rem">
+      <label>Status Pembayaran</label>
+      <select id="inv-paid" style="flex:1; height:38px; border-radius:var(--radius); border:1px solid var(--border); background:var(--bg-input); font-size:13px; padding:0 10px; outline:none;">
+        <option value="unpaid">Belum Lunas</option>
+        <option value="paid">Lunas</option>
+      </select>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeInvoice()">Batal</button>
+      <button class="btn-preview" onclick="previewInvoice()">&#128065; Preview & Cetak</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: INVOICE PREVIEW -->
+<div class="modal-overlay" id="invoice-preview-overlay">
+  <div class="invoice-preview-modal">
+    <div class="inv-preview-actions">
+      <button class="btn-print" onclick="printInvoice()">&#128438; Print</button>
+      <button class="btn-pdf" onclick="downloadPDF()">&#128196; Download PDF</button>
+      <button class="btn-back-inv" onclick="backToInvoiceForm()">&#8592; Kembali</button>
+      <button class="btn-cancel" onclick="closeAllInvoice()">Tutup</button>
+    </div>
+    <div id="invoice-doc">
+      <div class="inv-doc-header">
+        <div>
+          <div class="inv-doc-company">San Travel Visa</div>
+          <div class="inv-doc-company-sub">Jasa Pembuatan Visa Profesional</div>
+        </div>
+        <div class="inv-doc-title">
+          <h2>INVOICE</h2>
+          <p id="inv-doc-no"></p>
+          <p id="inv-doc-date"></p>
+        </div>
+      </div>
+      <div class="inv-doc-meta">
+        <div class="inv-doc-meta-block">
+          <h4>Tagihan Kepada</h4>
+          <p class="big" id="inv-doc-name"></p>
+          <p id="inv-doc-phone"></p>
+          <p id="inv-doc-email"></p>
+        </div>
+        <div class="inv-doc-meta-block">
+          <h4>Detail Order</h4>
+          <p><strong>No. Order:</strong> <span id="inv-doc-orderno"></span></p>
+          <p><strong>Jenis Visa:</strong> <span id="inv-doc-visa"></span></p>
+          <p><strong>Tgl Order:</strong> <span id="inv-doc-orderdate"></span></p>
+        </div>
+      </div>
+      <table class="inv-doc-table">
+        <thead>
+          <tr><th>Deskripsi</th><th>Jumlah</th></tr>
+        </thead>
+        <tbody id="inv-doc-items"></tbody>
+      </table>
+      <div class="inv-doc-totals" id="inv-doc-totals"></div>
+      <div class="inv-paid-wrap" id="inv-paid-stamp-wrap" style="display:none">
+        <div class="inv-paid-stamp">LUNAS</div>
+      </div>
+      <div class="inv-doc-footer">
+        Terima kasih telah mempercayakan pembuatan visa Anda kepada San Travel Visa.<br>
+        Dokumen ini dibuat secara otomatis dan sah tanpa tanda tangan basah.
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   // =============================================
   // KONFIGURASI SUPABASE — GANTI INI
@@ -513,8 +693,9 @@
         <span>${o.order_date}</span>
         <span><span class="status-badge ${st.cls}" style="font-size:11px;padding:3px 9px;">${st.label}</span></span>
         <div class="action-btns">
-          <button class="btn-edit" onclick="openEdit('${o.id}')">&#9998;</button>
-          <button class="btn-del" onclick="openConfirm('${o.id}')">&#128465;</button>
+          <button class="btn-edit" onclick="openEdit('${o.id}')" title="Edit">&#9998;</button>
+          <button class="btn-inv" onclick="openInvoice('${o.id}')" title="Invoice">&#128203;</button>
+          <button class="btn-del" onclick="openConfirm('${o.id}')" title="Hapus">&#128465;</button>
         </div>
       </div>`;
     }).join('');
@@ -570,6 +751,107 @@
     }
     btn.textContent = 'Simpan'; btn.disabled = false;
     closeModal(); await loadOrders();
+  }
+
+  // ---- INVOICE ----
+  let invoiceOrderId = null;
+
+  function formatRp(n) {
+    return 'Rp ' + Math.round(n).toLocaleString('id-ID');
+  }
+
+  function calcInvTotal() {
+    const amount = parseFloat(document.getElementById('inv-amount').value) || 0;
+    const extra = parseFloat(document.getElementById('inv-extra').value) || 0;
+    const discount = parseFloat(document.getElementById('inv-discount').value) || 0;
+    const extraLabel = document.getElementById('inv-extra-label').value || 'Biaya lain-lain';
+    const discLabel = document.getElementById('inv-discount-label').value || 'Diskon';
+    const total = amount + extra - discount;
+    document.getElementById('inv-t-amount').textContent = formatRp(amount);
+    const extraRow = document.getElementById('inv-t-extra-row');
+    extraRow.style.display = extra > 0 ? 'flex' : 'none';
+    document.getElementById('inv-t-extra-label').textContent = extraLabel;
+    document.getElementById('inv-t-extra').textContent = formatRp(extra);
+    const discRow = document.getElementById('inv-t-disc-row');
+    discRow.style.display = discount > 0 ? 'flex' : 'none';
+    document.getElementById('inv-t-disc-label').textContent = discLabel;
+    document.getElementById('inv-t-disc').textContent = '- ' + formatRp(discount);
+    document.getElementById('inv-t-total').textContent = formatRp(Math.max(0, total));
+  }
+
+  function openInvoice(id) {
+    const o = allOrders.find(x => x.id === id); if (!o) return;
+    invoiceOrderId = id;
+    document.getElementById('inv-name').textContent = o.name;
+    document.getElementById('inv-orderno').textContent = o.order_no;
+    document.getElementById('inv-visa').textContent = 'Visa ' + o.visa_type;
+    document.getElementById('inv-date').textContent = o.order_date;
+    document.getElementById('inv-desc').value = 'Visa ' + o.visa_type + ' – Biaya Visa & Jasa';
+    document.getElementById('inv-amount').value = '';
+    document.getElementById('inv-extra').value = '';
+    document.getElementById('inv-extra-label').value = '';
+    document.getElementById('inv-discount').value = '';
+    document.getElementById('inv-discount-label').value = '';
+    document.getElementById('inv-paid').value = 'unpaid';
+    calcInvTotal();
+    document.getElementById('invoice-overlay').classList.add('show');
+  }
+
+  function closeInvoice() {
+    document.getElementById('invoice-overlay').classList.remove('show');
+  }
+
+  function previewInvoice() {
+    const o = allOrders.find(x => x.id === invoiceOrderId); if (!o) return;
+    const amount = parseFloat(document.getElementById('inv-amount').value) || 0;
+    const extra = parseFloat(document.getElementById('inv-extra').value) || 0;
+    const extraLabel = document.getElementById('inv-extra-label').value || 'Biaya lain-lain';
+    const discount = parseFloat(document.getElementById('inv-discount').value) || 0;
+    const discLabel = document.getElementById('inv-discount-label').value || 'Diskon';
+    const desc = document.getElementById('inv-desc').value || 'Biaya Visa & Jasa';
+    const paid = document.getElementById('inv-paid').value === 'paid';
+    const total = Math.max(0, amount + extra - discount);
+    const today = new Date().toLocaleDateString('id-ID', { day:'numeric', month:'long', year:'numeric' });
+
+    document.getElementById('inv-doc-no').textContent = 'No: INV/' + o.order_no.replace('STV-','');
+    document.getElementById('inv-doc-date').textContent = 'Tanggal: ' + today;
+    document.getElementById('inv-doc-name').textContent = o.name;
+    document.getElementById('inv-doc-phone').textContent = o.phone;
+    document.getElementById('inv-doc-email').textContent = o.email || '';
+    document.getElementById('inv-doc-orderno').textContent = o.order_no;
+    document.getElementById('inv-doc-visa').textContent = 'Visa ' + o.visa_type;
+    document.getElementById('inv-doc-orderdate').textContent = o.order_date;
+
+    let rows = `<tr><td>${desc}</td><td style="text-align:right;font-weight:500">${formatRp(amount)}</td></tr>`;
+    if (extra > 0) rows += `<tr><td>${extraLabel}</td><td style="text-align:right;font-weight:500">${formatRp(extra)}</td></tr>`;
+    document.getElementById('inv-doc-items').innerHTML = rows;
+
+    let totalsHtml = '';
+    if (extra > 0) totalsHtml += `<div class="inv-doc-total-row"><span>Subtotal</span><span>${formatRp(amount + extra)}</span></div>`;
+    if (discount > 0) totalsHtml += `<div class="inv-doc-total-row discount"><span>${discLabel}</span><span>- ${formatRp(discount)}</span></div>`;
+    totalsHtml += `<div class="inv-doc-total-row grand"><span>Total</span><span class="val">${formatRp(total)}</span></div>`;
+    document.getElementById('inv-doc-totals').innerHTML = totalsHtml;
+
+    document.getElementById('inv-paid-stamp-wrap').style.display = paid ? 'block' : 'none';
+
+    document.getElementById('invoice-overlay').classList.remove('show');
+    document.getElementById('invoice-preview-overlay').classList.add('show');
+  }
+
+  function printInvoice() { window.print(); }
+
+  function downloadPDF() {
+    window.print();
+  }
+
+  function backToInvoiceForm() {
+    document.getElementById('invoice-preview-overlay').classList.remove('show');
+    document.getElementById('invoice-overlay').classList.add('show');
+  }
+
+  function closeAllInvoice() {
+    document.getElementById('invoice-preview-overlay').classList.remove('show');
+    document.getElementById('invoice-overlay').classList.remove('show');
   }
 
   // ---- DELETE ----
