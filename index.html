@@ -104,6 +104,10 @@
     .btn-full:hover { background: var(--blue-dark); }
     .login-error { color: #A32D2D; font-size: 13px; margin-top: 8px; text-align: center; display: none; }
     .login-error.show { display: block; }
+    .pass-wrap { position: relative; }
+    .pass-wrap input { width: 100%; padding-right: 42px; }
+    .pass-toggle { position: absolute; right: 0; top: 0; height: 42px; width: 42px; background: transparent; border: none; cursor: pointer; color: var(--text-muted); display: flex; align-items: center; justify-content: center; font-size: 16px; transition: color 0.15s; }
+    .pass-toggle:hover { color: var(--text); }
 
     /* DASHBOARD */
     .dashboard-wrap { display: none; }
@@ -232,7 +236,12 @@
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" id="staff-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter') doLogin()" />
+        <div class="pass-wrap">
+          <input type="password" id="staff-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter') doLogin()" />
+          <button type="button" class="pass-toggle" onclick="togglePass()" id="pass-toggle-btn" title="Tampilkan password">
+            <span id="pass-icon">&#128065;</span>
+          </button>
+        </div>
       </div>
       <button class="btn-full" onclick="doLogin()" id="btn-login">Masuk</button>
       <div class="login-error" id="login-error">Email atau password salah.</div>
@@ -378,6 +387,19 @@
   let deleteId = null;
 
   function getStatus(key) { return STATUSES.find(s => s.key === key) || STATUSES[0]; }
+
+  // ---- TOGGLE PASSWORD VISIBILITY ----
+  function togglePass() {
+    const input = document.getElementById('staff-pass');
+    const icon = document.getElementById('pass-icon');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.textContent = '🙈';
+    } else {
+      input.type = 'password';
+      icon.textContent = '👁';
+    }
+  }
 
   // ---- TAB SWITCHING ----
   function switchTab(tab) {
